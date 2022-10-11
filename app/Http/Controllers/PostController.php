@@ -126,10 +126,13 @@ class PostController extends Controller
                 'TargetImage' => [
                     'S3Object' => [
                         'Bucket' => 'sw77-bucket-s3',
-                        'Name' => '16651946861517506_424774140999473_331391128_n.jpg',
+                        'Name' => '1665464991image_picker7213288403214370069.jpg',
                     ],
                 ],
             ]);
+
+            dd($result);
+            
             $image = $request->file('image');
 
             $name = time().$image->getClientOriginalName();
