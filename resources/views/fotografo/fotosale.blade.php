@@ -18,10 +18,10 @@
             <h3 class="text-sm text-gray-700">
               <a href="#">
                 <span aria-hidden="true" class="absolute inset-0"></span>
-                Basic Tee
+                Precio
               </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-500">Black</p>
+            <p class="mt-1 text-sm text-gray-500">Imagen</p>
           </div>
           <p class="text-sm font-medium text-gray-900">$10</p>
         </div>
