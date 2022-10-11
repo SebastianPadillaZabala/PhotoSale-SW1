@@ -26,8 +26,8 @@
           <p class="text-sm font-medium text-gray-900">$10</p>
         </div>
       </div>
+      @endforeach
     </div>
-    @endforeach
   </div>
 </div>
 @endsection
