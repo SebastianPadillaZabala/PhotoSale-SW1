@@ -10,7 +10,7 @@
             @foreach($eventos as $e)
             <div class="transform hover:scale-105 transition duration-500 hover:bg-gray-50">
                 <div class="relative">
-                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80" src="https://cdn0.bodas.com.mx/vendor/4758/3_2/960/jpeg/salon-fiesta-colonial-redut-2-089_5_164758-158741239618002.jpeg" alt="">
+                    <img class="object-cover object-center w-full h-64 rounded-lg lg:h-70" src="https://cdn0.bodas.com.mx/vendor/4758/3_2/960/jpeg/salon-fiesta-colonial-redut-2-089_5_164758-158741239618002.jpeg" alt="">
 
                     <div class="absolute bottom-0 flex p-3 bg-white dark:bg-gray-900 ">
                         <img class="object-cover object-center w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
