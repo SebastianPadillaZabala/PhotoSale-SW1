@@ -12,11 +12,11 @@
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-sm text-gray-700">
-                <span aria-hidden="true" class="absolute inset-0"></span>
-                Precio
+              <span aria-hidden="true" class="absolute inset-0"></span>
+              Precio
             </h3>
             <a href="#">
-            <p class="mt-1 text-sm text-gray-500">Comprar</p>
+              <button class="mt-4 text-xl w-28 text-white bg-green-500 hover:bg-green-600 py-2 rounded-xl shadow-lg">Comprar</button>
             </a>
           </div>
           <p class="text-sm font-medium text-gray-900">$10</p>
