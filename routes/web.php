@@ -141,6 +141,9 @@ Route::get('/Miseventos', [FotografoController::class, 'misEventos'])
 ->middleware('auth')
 ->name('eventosFotografo');
 
+Route::get('/Secret/{path}', [FotoController::class, 'view'])
+->name('clientes-view');
+
 ///Planes
 Route::get('/planes',[PlanController::class, 'index'])
 ->name('planes');

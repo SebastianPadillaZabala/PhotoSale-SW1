@@ -68,6 +68,8 @@ class FotoController extends Controller
                     ],
                 ]);
 
+                $x = $request->file('image');
+
                 $d = $result->get('FaceMatches');
                 if ($d != null) {
                     $d = $d[0];
@@ -83,7 +85,7 @@ class FotoController extends Controller
                             ],
                             "notification" => [
                                 "title" => 'PhotoSale',
-                                "body" => 'Apareces en una nueva foto',
+                                "body" => 'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/.$x',
                                 "sound" => "default"
                             ],
 
@@ -135,6 +137,12 @@ class FotoController extends Controller
     public function show(Foto $foto)
     {
         //
+    }
+
+    public function view($path)
+    {
+
+        return view('layouts.fotosale', ['path' => $path]);
     }
 
     /**
