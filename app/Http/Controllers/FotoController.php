@@ -96,7 +96,7 @@ class FotoController extends Controller
                             'Content-Type: application/json',
                         ];
 
-                        $ch = curl_init();
+                        $ch = \curl_init();
 
                         curl_setopt($ch, option: CURLOPT_URL, value: 'https://fcm.googleapis.com/fcm/send');
                         curl_setopt($ch, option: CURLOPT_POST, value: true);
