@@ -159,7 +159,7 @@ class FotoController extends Controller
 
     public function pagoFotoView($path){
 
-        return view('layouts.checkoutSale', ['$path' => $path]);
+        return view('layouts.checkoutSale', ['path' => $path]);
     }
 
 
