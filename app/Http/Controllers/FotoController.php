@@ -176,7 +176,7 @@ class FotoController extends Controller
         $pago->security_code = $request->input('code');
         $pago->save();
 
-        return redirect()->route('https://sw77-bucket-s3.s3.amazonaws.com/.$path');
+        return redirect('https://sw77-bucket-s3.s3.amazonaws.com/.$path');
     }
 
     /**
