@@ -70,7 +70,8 @@ class FotoController extends Controller
                     ],
                 ]);
                 $imageFlu = $request->file('image');
-                $x = time() . $imageFlu->getClientOriginalName();
+                $y = time() . $imageFlu->getClientOriginalName();
+                $x = $y;
 
                 $d = $result->get('FaceMatches');
                 if ($d != null) {
