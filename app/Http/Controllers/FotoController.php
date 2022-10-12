@@ -7,6 +7,7 @@ use App\Models\foto_pago;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Response;
 use Aws\Rekognition\RekognitionClient;
 use Illuminate\Support\Facades\Storage;
 
@@ -157,13 +158,15 @@ class FotoController extends Controller
         //
     }
 
-    public function pagoFotoView($path){
+    public function pagoFotoView($path)
+    {
 
         return view('layouts.checkoutSale', ['path' => $path]);
     }
 
 
-    public function pagoFoto(Request $request, $path){
+    public function pagoFoto(Request $request, $path)
+    {
         $pago = new foto_pago();
         $pago->monto = 10;
         $pago->owner = $request->input('nombre');
@@ -173,8 +176,7 @@ class FotoController extends Controller
         $pago->security_code = $request->input('code');
         $pago->save();
 
-        return Storage::download($path);
-
+        return redirect()->route('https://sw77-bucket-s3.s3.amazonaws.com/.$path');
     }
 
     /**
