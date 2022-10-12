@@ -88,14 +88,14 @@ class FotoController extends Controller
                             ],
                             "notification" => [
                                 "title" => 'PhotoSale',
-                                "body" => 'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.$x,
+                                "body" => $x,
                                 "sound" => "default"
                             ],
 
                         ];
 
                         $dataString = json_encode($data);
-
+                        //'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.$x
                         $headers = [
                             'Authorization: key=' . $SERVER_API_KEY,
                             'Content-Type: application/json',
