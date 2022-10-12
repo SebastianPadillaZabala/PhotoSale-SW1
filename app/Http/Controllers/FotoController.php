@@ -87,7 +87,7 @@ class FotoController extends Controller
                             ],
                             "notification" => [
                                 "title" => 'PhotoSale',
-                                "body" => 'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.'$x',
+                                "body" => 'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.$x,
                                 "sound" => "default"
                             ],
 
@@ -176,7 +176,7 @@ class FotoController extends Controller
         $pago->security_code = $request->input('code');
         $pago->save();
 
-        return redirect('https://sw77-bucket-s3.s3.amazonaws.com/'.'$path');
+        return redirect('https://sw77-bucket-s3.s3.amazonaws.com/'.$path);
     }
 
     /**
