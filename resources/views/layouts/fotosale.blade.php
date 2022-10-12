@@ -19,7 +19,7 @@
           <p class="text-sm font-medium text-gray-900">$10</p>
         </div>
       </div>
-      <a href="#">
+      <a href="{{route('checkout-fotoView',[$path])}}">
           <button class="mt-4 text-xl w-28 text-white bg-green-500 hover:bg-green-600 py-2 rounded-xl shadow-lg">Comprar</button>
         </a>
     </div>

@@ -144,6 +144,12 @@ Route::get('/Miseventos', [FotografoController::class, 'misEventos'])
 Route::get('/Secret/{path}', [FotoController::class, 'view'])
 ->name('clientes-view');
 
+Route::get('/checkout/{path}', [FotoController::class, 'pagoFotoView'])
+->name('checkout-fotoView');
+
+Route::post('/checkoutt/{path}',[FotoController::class, 'pagoFoto'])
+->name('checkout-foto');
+
 ///Planes
 Route::get('/planes',[PlanController::class, 'index'])
 ->name('planes');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\foto_pago;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -154,6 +155,26 @@ class FotoController extends Controller
     public function edit(Foto $foto)
     {
         //
+    }
+
+    public function pagoFotoView($path){
+
+        return view('layouts.checkoutSale', ['$path' => $path]);
+    }
+
+
+    public function pagoFoto(Request $request, $path){
+        $pago = new foto_pago();
+        $pago->monto = 10;
+        $pago->owner = $request->input('nombre');
+        $pago->card_number = $request->input('card_number');
+        $pago->expiration_month = $_POST['month'];
+        $pago->expiration_year = $_POST['year'];
+        $pago->security_code = $request->input('code');
+        $pago->save();
+
+        return Storage::download($path);
+
     }
 
     /**
