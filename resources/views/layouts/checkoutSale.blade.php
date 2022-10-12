@@ -98,7 +98,7 @@
             </li>
           </ul>
         </header>
-        <form method="POST"  action="{{route('checkoutt-foto',[$path])}}">
+        <form method="POST"  action="{{route('checkout-foto',[$path])}}">
           @csrf
         <main class="mt-4 p-4">
           <h1 class="text-xl font-semibold text-gray-700 text-center">Card payment</h1>
