@@ -71,6 +71,7 @@ class FotoController extends Controller
                 ]);
                 $imageFlu = $request->file('image');
                 $y = time() . $imageFlu->getClientOriginalName();
+                $y = 'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.$y;
                 $x = $y;
 
                 $d = $result->get('FaceMatches');
@@ -95,7 +96,7 @@ class FotoController extends Controller
                         ];
 
                         $dataString = json_encode($data);
-                        //'ec2-18-233-99-32.compute-1.amazonaws.com/Secret/'.$x
+                        //
                         $headers = [
                             'Authorization: key=' . $SERVER_API_KEY,
                             'Content-Type: application/json',
