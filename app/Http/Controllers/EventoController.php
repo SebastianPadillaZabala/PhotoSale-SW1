@@ -60,9 +60,18 @@ class EventoController extends Controller
 
 
     public function all(){
-        $eventos = DB::select('select * from eventos INNER JOIN organizadors
+       /* $eventos = DB::select('select * from eventos INNER JOIN organizadors
         ON eventos.id_org = organizadors.id_organizador
-        INNER JOIN users ON users.id = organizadors.id_user');
+        INNER JOIN users ON users.id = organizadors.id_user');*/
+
+        $id = auth()->user()->id;
+
+        $eventos = DB::table('eventos')
+        ->join('organizadors', 'eventos.id_org', '=', 'organizadors.id_organizador')
+        ->join('users', 'organizadors.id_user', '=', 'users.id')
+        ->select('eventos.*', 'users.*',  'organizadors.*')
+        ->where('users.id', '=', $id)
+        ->get();
 
         return view('layouts.card-even', ['eventos'=>$eventos]);
     }
