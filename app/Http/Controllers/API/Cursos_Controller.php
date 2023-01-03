@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Categoria;
+use Aws\Rekognition\RekognitionClient;
 use App\Models\Curso;
 
 class Cursos_Controller extends Controller
@@ -39,6 +40,48 @@ class Cursos_Controller extends Controller
         'data' => 'aceptado',
     ];
          return response()->json($response, 200);
+    }
+
+    public function store(Request $request)
+    {  
+
+        if($request->hasFile('file')){
+
+
+            $client = new RekognitionClient([
+                'region' => env('AWS_DEFAULT_REGION'),
+                'version' => 'latest'
+            ]);
+
+            $image = fopen($request->file('file')->getPathname(),'r');
+            $bytes = fread($image, $request->file('file')->getSize());
+
+            $result = $client->detectFaces([
+                'Image' => ['Bytes' => $bytes],
+                "Attributes" => ["ALL"]
+                //'Gender' => 50
+            ]);
+
+
+            $resultLabels = $result->get('FaceDetails');
+
+            if($resultLabels[0]['Gender']['Value'] == 'Female'){
+                //dd('aceptado');
+                //return response('aceptado');
+                $response = [
+                    'data' => 'aceptado',
+                ];
+                return response()->json($response, 200);
+            }else{
+               //dd('rechazado');
+               $response = [
+                'data' => 'rechazado',
+               ];
+               // return response('rechazado');
+                return response()->json($response, 201);
+            }
+        }
+        //return redirect()->back();
     }
 
 }
