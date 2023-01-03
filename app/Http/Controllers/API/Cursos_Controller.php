@@ -44,7 +44,7 @@ class Cursos_Controller extends Controller
 
     public function store(Request $request)
     {  
-
+/*
         if($request->hasFile('file')){
 
 
@@ -80,8 +80,13 @@ class Cursos_Controller extends Controller
                // return response('rechazado');
                 return response()->json($response, 201);
             }
-        }
+        }*/
         //return redirect()->back();
+        $response = [
+            'data' => 'rechazado',
+           ];
+           // return response('rechazado');
+            return response()->json($response, 201);
     }
 
 }
