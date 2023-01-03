@@ -22,7 +22,6 @@
     </style>
 </head>
 <body class="font-sans antialiased">
-@include('layouts.navbar')
 @yield('content')
 @stack('scripts')
 </body>
