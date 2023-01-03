@@ -21,7 +21,7 @@ use App\Http\Controllers\SuscripcionController;
 */
 
 Route::get('/', function () {
-    return view('welcome-ecommerce');
+    return view('welcome');
 });
 
 Route::get('/home',[LoginController::class, 'home'])
