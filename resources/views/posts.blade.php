@@ -27,7 +27,7 @@
                     </div>
                     <div>
                         <label for="image">Post image optional</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="file" id="file">
                     </div>
                     <div>
                         <label for="description">Description optional</label>

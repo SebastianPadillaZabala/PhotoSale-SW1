@@ -30,26 +30,10 @@ class PostController extends Controller
         //
     }
 
-    public function store2(Request $request)
-    {
-        $this->validate($request, [
-            'title' => 'required',
-            'image' => 'nullable|sometimes|file',
-            'description' => 'nullable|sometimes'
-        ]);
-        /*
-         $newPost = auth()->user()->posts()->create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description')
-        ]);
-*/
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->description = $request->input('description');
-        $post->user_id = auth()->user()->id;
-       
+    public function store(Request $request)
+    {  
 
-        if($request->hasFile('image')){
+        if($request->hasFile('file')){
 
 
             $client = new RekognitionClient([
@@ -57,29 +41,35 @@ class PostController extends Controller
                 'version' => 'latest'
             ]);
 
-            $image = fopen($request->file('image')->getPathname(),'r');
-            $bytes = fread($image, $request->file('image')->getSize());
+            $image = fopen($request->file('file')->getPathname(),'r');
+            $bytes = fread($image, $request->file('file')->getSize());
 
-            $result = $client->detectModerationLabels([
+            $result = $client->detectFaces([
                 'Image' => ['Bytes' => $bytes],
-                'MinConfidence' => 50
+                "Attributes" => ["ALL"]
+                //'Gender' => 50
             ]);
 
-            $resultLabels = $result->get('ModerationLabels');
 
-            dd($resultLabels);
+            $resultLabels = $result->get('FaceDetails');
 
-            $imagePath = $request->file('image')->store('public/posts');
-
-            if($imagePath == null){
-                return redirect()->back()->withErrors(['image_upload_files' => 'the image upload failes']);
+            if($resultLabels[0]['Gender']['Value'] == 'Female'){
+                //dd('aceptado');
+                //return response('aceptado');
+                $response = [
+                    'data' => 'aceptado',
+                ];
+                return response()->json($response, 200);
+            }else{
+               //dd('rechazado');
+               $response = [
+                'data' => 'rechazado',
+               ];
+               // return response('rechazado');
+                return response()->json($response, 201);
             }
-
-            $post->image_path = $imagePath;
-            $post->save();
         }
-
-        return redirect()->back();
+        //return redirect()->back();
     }
 
     /**
@@ -88,7 +78,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store2(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',

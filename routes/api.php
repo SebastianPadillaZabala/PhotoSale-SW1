@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('register',[App\Http\Controllers\API\RegisterController::class, 'register']);
-Route::post('foto',[App\Http\Controllers\API\RegisterController::class, 'foto']);
+Route::post('foto',[App\Http\Controllers\PostController::class, 'store']);
 Route::post('login',[App\Http\Controllers\API\RegisterController::class, 'login']);
 
 
