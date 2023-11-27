@@ -1,7 +1,7 @@
 <footer class="flex flex-col items-center justify-between p-6 bg-green-500 dark:bg-gray-900 sm:flex-row">
     <a href="#" class="self-center text-xl font-semibold whitespace-nowrap text-white transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">PhotoSale</a>
 
-    <p class="text-sm text-white dark:text-gray-300">By Padilla Sebastian-SW1.</p>
+    <p class="text-sm text-white dark:text-gray-300">Olmos Campos Heidy-SW1.</p>
 
     <div class="flex -mx-2">
         <a href="#" class="mx-2 text-white transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">

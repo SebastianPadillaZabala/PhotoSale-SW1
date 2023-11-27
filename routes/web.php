@@ -21,7 +21,7 @@ use App\Http\Controllers\SuscripcionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome-ecommerce');
 });
 
 Route::get('/home',[LoginController::class, 'home'])
@@ -48,7 +48,7 @@ Route::post('/loginn',[LoginController::class, 'login'])
 ->name('loginn');
 
 
-///Organizador
+///ORGANIZADOR
 
 Route::get('/dashOrg',[FotografoController::class, 'all'])
 ->name('dashOrg');
@@ -56,46 +56,6 @@ Route::get('/dashOrg',[FotografoController::class, 'all'])
 Route::get('/regOrg', function () {
     return view('auth.register');
 })->name('registrarOrg');
-
-Route::get('/noti', function () {
-
-    $SERVER_API_KEY = 'AAAAauDoHxc:APA91bE0sD4v8Aw1sZJ0P-ddoYFGNM6TVGCBHo9Wq-CQ3jOcoFaZrhm0ZmRWNZRkCHV7doWq7YifeKZCtLLTToq6wICvI_KR1TNqvjAN1OuIHSuBZrbcSj9UZdqlowGfhu8SSYx139QG';
-    $token = 'fACZ1wjCSrmZocvtjyPIfZ:APA91bGXmIcHPd6dFt-AtQa0XzPIXStT14yY_8CGVTLZHTHAbNrrlJGfrUp5wqK-p7hmkT9E9N9I9eEOJxI3UmPWaOTcPwLBu9O-BPIusQfSg7FdyRl1zau4B5IISomzQR1tHy6SY1A-';
-    $data = [
-        "registration_ids" => [
-            $token
-        ],
-        "notification" => [
-            "title" => 'Welcome',
-            "body" => 'Description',
-            "sound" => "default"
-        ],
-
-    ];
-    
-    $dataString = json_encode($data);
-
-    $headers = [
-        'Authorization: key=' .$SERVER_API_KEY,
-        'Content-Type: application/json',
-    ];
-
-    $ch = curl_init();
-
-    curl_setopt($ch, option: CURLOPT_URL, value: 'https://fcm.googleapis.com/fcm/send');
-    curl_setopt($ch, option: CURLOPT_POST, value: true);
-    curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: $headers);
-    curl_setopt($ch, option: CURLOPT_SSL_VERIFYPEER, value: false);
-    curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
-    curl_setopt($ch, option: CURLOPT_POSTFIELDS, value: $dataString);
-
-    $response = curl_exec($ch);
-
-    dd($response);
-
-
-
-});
 
 Route::post('/registerOrg',[OrganizadorController::class, 'store'])
 ->name('registrarOrga');
@@ -112,8 +72,7 @@ Route::get('/MiseventosOrg', [OrganizadorController::class, 'misEventos'])
 ->name('eventosOrganizador');
 
 
-///Fotografo
-
+///FOTOGRAFO
 
 Route::get('/dashFotog',[EventoController::class, 'all'])
 ->middleware('auth')
@@ -150,7 +109,8 @@ Route::get('/checkout/{path}', [FotoController::class, 'pagoFotoView'])
 Route::post('/checkoutt/{path}',[FotoController::class, 'pagoFoto'])
 ->name('checkout-foto');
 
-///Planes
+///PLANES
+
 Route::get('/planes',[PlanController::class, 'index'])
 ->name('planes');
 
@@ -161,6 +121,46 @@ Route::get('/check-out/{id}', [PlanController::class, 'pagos'])
 Route::post('/checkout/{id}',[SuscripcionController::class, 'store'])
 ->name('checkout-input');
 
+//NOTIFICACION-PRUEBA
 
+Route::get('/noti', function () {
+
+    $SERVER_API_KEY = 'AAAAauDoHxc:APA91bE0sD4v8Aw1sZJ0P-ddoYFGNM6TVGCBHo9Wq-CQ3jOcoFaZrhm0ZmRWNZRkCHV7doWq7YifeKZCtLLTToq6wICvI_KR1TNqvjAN1OuIHSuBZrbcSj9UZdqlowGfhu8SSYx139QG';
+    $token = 'fN1yU_RuSgetj0dymNQaYi:APA91bEpIsqmXn4iUOR0XB_Ni4V4z2N29bfm4tMdQuSgUAVunNyOUvU7-4TaVwy92MBVgun0D3B_6pTlbgHq8zVd9xp_mXAMyySzYy3u2K4FvlPdcyzd1tLZ2btu4xxDAPNRee9HO4EV';
+    $data = [
+        "registration_ids" => [
+            $token
+        ],
+        "notification" => [
+            "title" => 'Welcome',
+            "body" => 'Description',
+            "sound" => "default"
+        ],
+
+    ];
+    
+    $dataString = json_encode($data);
+
+    $headers = [
+        'Authorization: key=' .$SERVER_API_KEY,
+        'Content-Type: application/json',
+    ];
+
+    $ch = curl_init();
+
+    curl_setopt($ch, option: CURLOPT_URL, value: 'https://fcm.googleapis.com/fcm/send');
+    curl_setopt($ch, option: CURLOPT_POST, value: true);
+    curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: $headers);
+    curl_setopt($ch, option: CURLOPT_SSL_VERIFYPEER, value: false);
+    curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
+    curl_setopt($ch, option: CURLOPT_POSTFIELDS, value: $dataString);
+
+    $response = curl_exec($ch);
+
+    dd($response);
+
+
+
+});
 
 

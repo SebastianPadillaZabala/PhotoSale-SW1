@@ -53,9 +53,9 @@ class EventoController extends Controller
         $evento->tipo_evento = $request->input('tipo_evento');
         $id =  DB::table('organizadors')->where('id_user', '=', auth()->user()->id)->value('id_organizador');
         $evento->id_org = $id;
-        $evento->id_fotog = $_POST['select'];;
+        $evento->id_fotog = $_POST['select'];
         $evento->save();
-        return redirect()->back();
+        return redirect()->route('eventosOrganizador');
     }
 
 

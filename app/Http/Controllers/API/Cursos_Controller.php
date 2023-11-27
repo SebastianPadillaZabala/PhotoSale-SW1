@@ -42,11 +42,10 @@ class Cursos_Controller extends Controller
          return response()->json($response, 200);
     }
 
+    //Funcion que activa la IA, foto que se envia desde flutter
     public function store(Request $request)
     {  
         if($request->hasFile('file')){
-
-
             $client = new RekognitionClient([
                 'region' => env('AWS_DEFAULT_REGION'),
                 'version' => 'latest'
@@ -58,9 +57,7 @@ class Cursos_Controller extends Controller
             $result = $client->detectFaces([
                 'Image' => ['Bytes' => $bytes],
                 "Attributes" => ["ALL"]
-                //'Gender' => 50
             ]);
-
 
             $resultLabels = $result->get('FaceDetails');
 

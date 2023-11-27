@@ -20,6 +20,7 @@
             font-family: 'Nunito';
         }
     </style>
+    @include('layouts.navbar')
 </head>
 <body class="font-sans antialiased">
 @yield('content')
